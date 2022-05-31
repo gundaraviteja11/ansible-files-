@@ -1,0 +1,6 @@
+---
+# vars file for httpd
+message: Helloworld
+sample1: ansible
+sample2: RedHat
+

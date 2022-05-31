@@ -1,0 +1,3 @@
+- name: instlaling httpd in hosts
+  yum: pkg=httpd state=latest
+

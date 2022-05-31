@@ -1,0 +1,16 @@
+---
+- hosts: all
+  connection: ssh
+  become: true
+  user: ansible
+  tasks:
+    - name: Creating one file under tmp folder
+      file: path=/tmp/ravi state=file
+
+    - name: Creating one dir under tmp foleder
+      file: path=/tmp/ravidir state=directory
+
+    - name: Copying file to hosts
+      copy: src=./ravi1 dest=/home/ansible
+
+...

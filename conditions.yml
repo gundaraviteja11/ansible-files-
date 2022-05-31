@@ -1,0 +1,15 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  user: ansible
+  tasks:
+          - name: Installing apache server in RedHat family
+            command: yum install httpd -y
+            when: ansible_os_family == "RedHat"
+
+          - name: Installing apache server in Debian family
+            command: apt-get install apache2 -y
+            when: ansible_os_family == "Debian"
+...
+

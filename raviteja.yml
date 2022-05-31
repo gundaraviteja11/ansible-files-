@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  tasks:
+         - name: Package installing
+           action: yum pkg=tree state=installed
+           ignore_errors: yes   
+         - name: Adding file
+           action: touch name=ansiblefile
+           ignore_errors: yes
+...
+

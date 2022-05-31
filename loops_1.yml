@@ -1,0 +1,18 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  user: ansible
+  tasks:
+          - name: installing many packages
+            yum: name='{{item}}' state=present #we can use installed also
+            with_items:             
+                 - tree
+
+          - name: installing many packages
+            user: name='{{item}}' state=present #we can use installed also
+            with_items:
+                 - Phani_Anna
+                 - Ravi_Thambi
+
+... 

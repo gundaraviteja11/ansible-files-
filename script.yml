@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  user: ansible
+  tasks:
+    - name: copy the script file in respective folder
+      copy: src=raviteja.sh dest=/home/ansible mode=0777
+
+    - name: To execute script file (raviteja.sh)
+      command: sudo sh /home/ansible/raviteja.sh
+...
+

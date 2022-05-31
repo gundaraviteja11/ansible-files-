@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  user: ansible
+  tasks:
+          - name: Installing one dependency package to check the handlers functionlity
+            action: yum name=httpd state=present
+            notify: start the service httpd
+  handlers:
+          - name: start the service httpd
+            action: service name=httpd state=started
+... 

@@ -1,0 +1,13 @@
+--- # This yml script for understanding variables in yml
+- hosts: all
+  user: ansible
+  connection: ssh
+  become: yes
+  vars:
+          ravi: tree
+  tasks:
+          - name: installing tree package in two VMs
+            action: yum name='{{ravi}}' state=absent
+
+... 
+

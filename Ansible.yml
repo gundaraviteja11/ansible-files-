@@ -1,0 +1,9 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  tasks:
+          - name: install any package
+            action: yum pkg=httpd stat=absent
+            ignore_errors: yes
+...

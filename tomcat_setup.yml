@@ -1,0 +1,32 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  user: ansible
+  tasks:
+          - name: installing java 
+            yum:
+                    name: java
+                    state: installed
+            
+          - name: downloading tomcat
+            get_url:
+                    url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.0-M14/bin/apache-tomcat-10.1.0-M14.tar.gz 
+                    dest: /opt
+
+          - name: unarchiving the tomcat server
+            unarchive:
+              src: /opt/apache-tomcat-10.1.0-M14.tar.gz
+              dest: /opt
+              remote_src: yes
+
+          - name: providing executable permissions to the start.sh file in bin folder
+            file:
+                    path: /opt/apache-tomcat-10.1.0-M14/bin/startup.sh
+                    mode: 0777
+
+          - name: start the service
+            shell: nohup ./startup.sh
+            args:
+                    chdir: /opt/apache-tomcat-10.1.0-M14/bin
+

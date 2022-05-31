@@ -1,0 +1,12 @@
+---
+  - name: install httpd
+    yum:
+          name: httpd
+          state: latest
+  - debug:
+      msg: "{{ message }}"
+
+  - name: Example for template
+    template:
+      src: hello_world.j2
+      dest: /tmp/server_details.txt
